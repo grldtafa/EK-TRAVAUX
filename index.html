@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EK TRAVAUX — Rénovation & Second œuvre · Région PACA</title>
+  <meta name="description" content="EK TRAVAUX, entreprise générale du second œuvre en région PACA. Rénovation intérieure, électricité, plomberie, peinture, salle de bains. Devis gratuit sous 48h.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --gold: #F07020;
+      --gold-light: #F59545;
+      --gold-soft: #F9E0CC;
+      --ink: #1A1A1A;
+      --ink-soft: #2D2D2D;
+      --grey-1: #5A5A5A;
+      --grey-2: #9A9A9A;
+      --grey-3: #E4E4E0;
+      --paper: #F8F7F4;
+      --white: #FFFFFF;
+      --font-display: 'Inter', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --nav-h: 72px;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(26,26,26,0.97);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7vw;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    nav.scrolled {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      background: var(--white);
+      padding: 4px 8px;
+      border-radius: 6px;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .nav-logo img.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.60);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-cta {
+      color: var(--white) !important;
+      border: 1px solid rgba(240,112,32,0.7) !important;
+      padding: 9px 22px;
+      letter-spacing: 0.10em !important;
+      transition: background 0.25s, border-color 0.25s !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+
+    /* Burger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.8);
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,26,0.52);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 7vw;
+      width: 100%;
+    }
+    .hero-logo-img {
+      width: clamp(280px, 38vw, 480px);
+      height: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 32px;
+    }
+    .hero-tagline {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 48px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: background 0.25s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color 0.25s, color 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+
+    /* ===== STATS ===== */
+    .stats {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      text-align: center;
+      color: var(--white);
+      padding: 40px 20px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stat-accent { color: var(--gold); }
+    .stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* ===== SECTIONS COMMUNES ===== */
+    section { padding: 108px 7vw; }
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 700;
+      line-height: 1.10;
+      color: var(--ink);
+      letter-spacing: -0.025em;
+    }
+    .section-title em { font-style: normal; color: var(--gold); font-weight: 700; }
+    .section-intro {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--grey-1);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-top: 18px;
+    }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--white); }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--grey-3);
+      border: 1px solid var(--grey-3);
+    }
+    .service-card {
+      background: var(--white);
+      padding: 40px 34px;
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: var(--paper); }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .service-card p {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--grey-1);
+      line-height: 1.7;
+    }
+    .service-line {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 20px;
+      transition: width 0.3s;
+    }
+    .service-card:hover .service-line { width: 40px; }
+
+    /* ===== MÉTHODE ===== */
+    #methode { background: var(--paper); }
+    .methode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+    .methode-img {
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .methode-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .methode-img:hover img { transform: scale(1.03); }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--grey-3);
+      align-items: flex-start;
+    }
+    .step:first-child { padding-top: 0; }
+    .step-num {
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      padding-top: 3px;
+      min-width: 28px;
+    }
+    .step-body h4 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .step-body p {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--grey-1);
+      line-height: 1.7;
+    }
+
+    /* ===== ENGAGEMENTS ===== */
+    #engagement {
+      background: var(--ink);
+    }
+    #engagement .section-eyebrow { color: var(--gold); }
+    #engagement .section-eyebrow::before { background: var(--gold); }
+    #engagement .section-title { color: var(--white); }
+    .engagements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      margin-top: 64px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .eng-card {
+      background: var(--ink);
+      padding: 44px 32px;
+      transition: background 0.25s;
+    }
+    .eng-card:hover { background: rgba(255,255,255,0.03); }
+    .eng-card h4 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .eng-card p {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+    .eng-line {
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 28px;
+      transition: width 0.3s;
+    }
+    .eng-card:hover .eng-line { width: 36px; }
+
+    /* ===== ZONE ===== */
+    #zone { background: var(--white); }
+    .zone-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+    .zone-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 32px;
+    }
+    .zone-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--grey-3);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+    }
+    .zone-item-num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--grey-2);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .zone-item--primary {
+      color: var(--gold);
+      font-weight: 600;
+      border-bottom-color: var(--gold-soft);
+    }
+    .zone-item--primary .zone-item-num { color: var(--gold); }
+    .zone-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--white);
+      padding: 3px 8px;
+      font-family: var(--font-body);
+    }
+    .zone-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zone-visual img {
+      width: 520px;
+      height: 520px;
+      max-width: none;
+      object-fit: contain;
+      opacity: 1;
+    }
+
+    /* ===== MÉTHODE FLAT ===== */
+    .methode-header { margin-bottom: 56px; }
+    .steps-flat {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--grey-3);
+      border: 1px solid var(--grey-3);
+    }
+    .steps-flat .step {
+      background: var(--paper);
+      flex-direction: column;
+      gap: 16px;
+      padding: 36px 28px;
+      border-bottom: none;
+    }
+    .steps-flat .step:first-child { padding-top: 36px; }
+    .steps-flat .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      padding-top: 0;
+    }
+    .steps-flat .step-body h4 { font-size: 15px; }
+    .steps-flat .step-body p { font-size: 13px; }
+
+    /* ===== CONTACT DARK ===== */
+    .contact-dark {
+      background: var(--ink) !important;
+    }
+    .contact-dark .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .section-eyebrow--light {
+      color: var(--gold) !important;
+    }
+    .section-eyebrow--light::before {
+      background: var(--gold) !important;
+    }
+    .contact-big-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 20px 0 44px;
+      text-transform: uppercase;
+    }
+    .contact-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cdet {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+    }
+    .cdet-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Formulaire dark */
+    .contact-dark .contact-form {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0;
+      font-size: 14px;
+      font-weight: 300;
+      font-family: var(--font-body);
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      transition: border-color 0.25s, background 0.25s;
+      outline: none;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder,
+    .form-group select { color: rgba(255,255,255,0.40); }
+    .form-group select option { background: var(--ink); color: var(--white); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: rgba(255,255,255,0.09);
+    }
+    .form-group textarea { resize: none; min-height: 110px; }
+    .form-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .btn-form-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--white);
+      border: none;
+      padding: 15px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .btn-form-whatsapp:hover { background: #1ebe5b; }
+    .btn-form-email {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 15px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-form-email:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+    .form-note {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.30);
+      text-align: center;
+      margin-top: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.3);
+      padding: 36px 7vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo img { height: 28px; opacity: 0.65; }
+    .footer-copy { font-size: 11px; letter-spacing: 0.04em; }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+    .footer-links a { transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1000px) {
+      .engagements-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      :root { --nav-h: 62px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--ink);
+        padding: 28px 7vw;
+        gap: 22px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links.open a { font-size: 14px; }
+      .burger { display: flex; }
+
+      section { padding: 72px 6vw; }
+
+      .hero-logo-img { width: 200px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { justify-content: center; width: 100%; max-width: 280px; }
+
+      .stats-grid { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 28px 20px; }
+      .stat-item:last-child { border-bottom: none; }
+
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .steps-flat { grid-template-columns: 1fr; }
+      .contact-dark .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+
+      .engagements-grid { grid-template-columns: 1fr; }
+
+      .zone-content { grid-template-columns: 1fr; gap: 0; }
+      .zone-visual { display: none; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .form-btns { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo-site.png" alt="EK TRAVAUX">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#methode">Méthode</a></li>
+      <li><a href="#engagement">Engagements</a></li>
+      <li><a href="#zone">Zone</a></li>
+      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="accueil">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="logo-site.png" alt="EK TRAVAUX" class="hero-logo-img">
+      <div class="hero-tagline">Rénovation & Second œuvre &nbsp;·&nbsp; Région PACA</div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Demander un devis</a>
+        <a href="#services" class="btn-secondary">Nos services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" style="font-size:28px;letter-spacing:0.02em;font-weight:400;">Clé en main</div>
+        <div class="stat-label">Du sol au plafond</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">48<span class="stat-accent">h</span></div>
+        <div class="stat-label">Délai de réponse</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="font-size:48px;letter-spacing:0.06em;font-weight:300;">PACA</div>
+        <div class="stat-label">Zone d'intervention</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0<span class="stat-accent">€</span></div>
+        <div class="stat-label">Devis sans engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="services-header">
+      <div>
+        <div class="section-eyebrow">Nos expertises</div>
+        <div class="section-title">Tous corps d'état<br>du second œuvre</div>
+      </div>
+      <div class="section-intro" style="margin-top:0;">
+        EK TRAVAUX intervient sur tous les corps du second œuvre.
+        Un seul interlocuteur pour tout votre chantier, du début à la livraison.
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">01</div>
+        <h3>Rénovation intérieure</h3>
+        <p>Appartement, maison individuelle, local commercial, bureau. Rénovation complète ou partielle, du sol au plafond.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">02</div>
+        <h3>Électricité</h3>
+        <p>Mise aux normes, tableau électrique, éclairage, prises et domotique. Travaux conformes à la réglementation en vigueur.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">03</div>
+        <h3>Plomberie</h3>
+        <p>Installation et rénovation de tous vos réseaux d'eau, arrivées et évacuations, robinetterie et sanitaires.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">04</div>
+        <h3>Climatisation &amp; Chauffage</h3>
+        <p>Pose de climatiseurs, pompes à chaleur, radiateurs et systèmes de ventilation VMC.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">05</div>
+        <h3>Peinture &amp; Revêtements</h3>
+        <p>Peinture intérieure, carrelage, faïence, revêtements de sols, placo et isolation — finitions soignées.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-line"></span>
+        <div class="service-num">06</div>
+        <h3>Salle de bains</h3>
+        <p>Rénovation complète de salle de bains : plomberie, carrelage, faïence, mobilier, douche et baignoire.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MÉTHODE ===== -->
+  <section id="methode">
+    <div class="methode-header">
+      <div class="section-eyebrow">Notre méthode</div>
+      <div class="section-title">5 étapes pour un chantier<br>sans mauvaise surprise</div>
+    </div>
+    <div class="steps steps-flat">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h4>Étude &amp; Devis gratuit</h4>
+          <p>Visite sur site, écoute de votre projet, chiffrage détaillé sous 48h. Sans engagement.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h4>Planification</h4>
+          <p>Calendrier précis des interventions, coordination des corps d'état, anticipation des contraintes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h4>Exécution maîtrisée</h4>
+          <p>Nos équipes qualifiées interviennent dans l'ordre et dans les règles de l'art.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h4>Suivi &amp; Communication</h4>
+          <p>Vous êtes informé à chaque étape clé. Zéro dérive de budget, zéro mauvaise surprise.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h4>Livraison &amp; Garantie</h4>
+          <p>Réception du chantier avec vous, levée des réserves et garantie décennale sur nos travaux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENGAGEMENTS ===== -->
+  <section id="engagement">
+    <div class="section-eyebrow">Nos engagements</div>
+    <div class="section-title" style="color:var(--white)">Ce qui nous distingue</div>
+    <div class="engagements-grid">
+      <div class="eng-card">
+        <span class="eng-line"></span>
+        <h4>Interlocuteur unique</h4>
+        <p>Un chef de projet dédié du premier contact jusqu'à la livraison finale.</p>
+      </div>
+      <div class="eng-card">
+        <span class="eng-line"></span>
+        <h4>Devis transparent</h4>
+        <p>Chiffrage détaillé ligne par ligne. Aucune surprise en cours de chantier.</p>
+      </div>
+      <div class="eng-card">
+        <span class="eng-line"></span>
+        <h4>Délais respectés</h4>
+        <p>Planning établi et tenu. Votre temps est aussi précieux que le nôtre.</p>
+      </div>
+      <div class="eng-card">
+        <span class="eng-line"></span>
+        <h4>Garantie décennale</h4>
+        <p>Tous nos travaux sont couverts par les assurances professionnelles obligatoires.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ZONE ===== -->
+  <section id="zone">
+    <div class="zone-content">
+      <div>
+        <div class="section-eyebrow">Zone d'intervention</div>
+        <div class="section-title">Toute la région <em>PACA</em></div>
+        <div class="section-intro">
+          EK TRAVAUX se déplace sur l'ensemble de la région Provence-Alpes-Côte d'Azur pour vos chantiers de rénovation et d'aménagement.
+        </div>
+        <div class="zone-list">
+          <div class="zone-item zone-item--primary">Bouches-du-Rhône <span class="zone-item-num">13 <span class="zone-badge">Zone principale</span></span></div>
+          <div class="zone-item">Var <span class="zone-item-num">83</span></div>
+          <div class="zone-item">Vaucluse <span class="zone-item-num">84</span></div>
+          <div class="zone-item">Alpes-Maritimes <span class="zone-item-num">06</span></div>
+          <div class="zone-item">Alpes-de-Haute-Provence <span class="zone-item-num">04</span></div>
+          <div class="zone-item">Hautes-Alpes <span class="zone-item-num">05</span></div>
+        </div>
+      </div>
+      <div class="zone-visual">
+        <img src="../paca-map.png" alt="Région PACA">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact-dark">
+    <div class="contact-wrap">
+
+      <div class="contact-info">
+        <div class="section-eyebrow section-eyebrow--light">Contact</div>
+        <div class="contact-big-title">Discuter<br>d'un projet</div>
+        <div class="contact-details-list">
+          <div class="cdet">
+            <svg class="cdet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .89h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>06 02 17 90 70</span>
+          </div>
+          <div class="cdet">
+            <svg class="cdet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>ektravaux13@gmail.com</span>
+          </div>
+          <div class="cdet">
+            <svg class="cdet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Région PACA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+          <input type="hidden" name="access_key" value="cf927568-5981-4c98-8b89-4579709124f7">
+          <input type="hidden" name="subject" value="Nouvelle demande de devis — EK TRAVAUX">
+          <input type="hidden" name="from_name" value="EK TRAVAUX Site Web">
+          <input type="checkbox" name="botcheck" style="display:none;">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="nom" placeholder="Nom" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="entreprise" placeholder="Entreprise (optionnel)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" name="telephone" placeholder="Téléphone" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <select name="type_projet" required>
+              <option value="">Type de projet</option>
+              <option>Rénovation complète</option>
+              <option>Rénovation partielle</option>
+              <option>Salle de bain</option>
+              <option>Cuisine</option>
+              <option>Electricité / Plomberie</option>
+              <option>Climatisation / Chauffage</option>
+              <option>Peinture / Revêtements</option>
+              <option>Extension / Aménagement</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Décrivez votre projet…"></textarea>
+          </div>
+          <div class="form-btns">
+            <button type="submit" name="_action" value="whatsapp" class="btn-form-whatsapp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Envoyer sur WhatsApp
+            </button>
+            <button type="submit" name="_action" value="email" class="btn-form-email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Envoyer par email
+            </button>
+          </div>
+          <p class="form-note">Réponse sous 48h &nbsp;·&nbsp; Devis gratuit et sans engagement</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">
+      <img src="logo-site.png" alt="EK TRAVAUX">
+    </div>
+    <div class="footer-copy">
+      © 2026 EK TRAVAUX — Rénovation & Second œuvre · PACA
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#methode">Méthode</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Nav : apparait quand on depasse le hero
+    const navEl = document.querySelector('nav');
+    const navLogoImg = document.querySelector('.nav-logo img');
+    const heroSection = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      const heroBottom = heroSection.offsetHeight - 80;
+      if (window.scrollY > heroBottom) {
+        navEl.classList.add('scrolled');
+        navLogoImg.classList.add('visible');
+      } else {
+        navEl.classList.remove('scrolled');
+        navLogoImg.classList.remove('visible');
+      }
+    });
+
+    // Formulaire contact : WhatsApp ou Email
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const action = e.submitter ? e.submitter.value : 'email';
+        const data = new FormData(form);
+        const nom = data.get('nom') || '';
+        const tel = data.get('telephone') || '';
+        const projet = data.get('type_projet') || '';
+        const msg = data.get('message') || '';
+
+        if (action === 'whatsapp') {
+          const text = encodeURIComponent(
+            `Bonjour EK TRAVAUX,\nJe m'appelle ${nom}.\nProjet : ${projet}\n${msg}\nMon numéro : ${tel}`
+          );
+          window.open(`https://wa.me/33602179070?text=${text}`, '_blank');
+          return;
+        }
+
+        // Email via Web3Forms
+        const btn = e.submitter;
+        const orig = btn.innerHTML;
+        btn.innerHTML = 'Envoi…';
+        btn.disabled = true;
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          const json = await res.json();
+          if (json.success) {
+            form.innerHTML = `
+              <div style="text-align:center;padding:60px 20px;color:var(--white);">
+                <div style="font-size:36px;color:#25D366;margin-bottom:16px;">✓</div>
+                <p style="font-size:18px;font-weight:600;margin-bottom:8px;">Message envoyé !</p>
+                <p style="font-size:14px;opacity:0.5;">Nous vous répondons sous 48h.</p>
+              </div>`;
+          } else {
+            btn.innerHTML = orig;
+            btn.disabled = false;
+          }
+        } catch {
+          btn.innerHTML = orig;
+          btn.disabled = false;
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
