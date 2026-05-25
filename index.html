@@ -746,6 +746,32 @@
 
       footer { flex-direction: column; align-items: flex-start; }
     }
+    /* ===== ANIMATIONS SCROLL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.reveal--left {
+      transform: translateX(-32px);
+    }
+    .reveal.reveal--right {
+      transform: translateX(32px);
+    }
+    .reveal.reveal--scale {
+      transform: translateY(20px) scale(0.97);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
   </style>
 </head>
 <body>
@@ -784,19 +810,19 @@
   <!-- ===== STATS ===== -->
   <div class="stats">
     <div class="stats-grid">
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-1">
         <div class="stat-num" style="font-size:28px;letter-spacing:0.02em;font-weight:400;">Clé en main</div>
         <div class="stat-label">Du sol au plafond</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-2">
         <div class="stat-num">48<span class="stat-accent">h</span></div>
         <div class="stat-label">Délai de réponse</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-3">
         <div class="stat-num" style="font-size:48px;letter-spacing:0.06em;font-weight:300;">PACA</div>
         <div class="stat-label">Zone d'intervention</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item reveal reveal-delay-4">
         <div class="stat-num">0<span class="stat-accent">€</span></div>
         <div class="stat-label">Devis sans engagement</div>
       </div>
@@ -806,47 +832,47 @@
   <!-- ===== SERVICES ===== -->
   <section id="services">
     <div class="services-header">
-      <div>
+      <div class="reveal reveal--left">
         <div class="section-eyebrow">Nos expertises</div>
         <div class="section-title">Tous corps d'état<br>du second œuvre</div>
       </div>
-      <div class="section-intro" style="margin-top:0;">
+      <div class="section-intro reveal reveal--right" style="margin-top:0;">
         EK TRAVAUX intervient sur tous les corps du second œuvre.
         Un seul interlocuteur pour tout votre chantier, du début à la livraison.
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-1">
         <span class="service-line"></span>
         <div class="service-num">01</div>
         <h3>Rénovation intérieure</h3>
         <p>Appartement, maison individuelle, local commercial, bureau. Rénovation complète ou partielle, du sol au plafond.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-2">
         <span class="service-line"></span>
         <div class="service-num">02</div>
         <h3>Électricité</h3>
         <p>Mise aux normes, tableau électrique, éclairage, prises et domotique. Travaux conformes à la réglementation en vigueur.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-3">
         <span class="service-line"></span>
         <div class="service-num">03</div>
         <h3>Plomberie</h3>
         <p>Installation et rénovation de tous vos réseaux d'eau, arrivées et évacuations, robinetterie et sanitaires.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-4">
         <span class="service-line"></span>
         <div class="service-num">04</div>
         <h3>Climatisation &amp; Chauffage</h3>
         <p>Pose de climatiseurs, pompes à chaleur, radiateurs et systèmes de ventilation VMC.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-5">
         <span class="service-line"></span>
         <div class="service-num">05</div>
         <h3>Peinture &amp; Revêtements</h3>
         <p>Peinture intérieure, carrelage, faïence, revêtements de sols, placo et isolation — finitions soignées.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal reveal-delay-6">
         <span class="service-line"></span>
         <div class="service-num">06</div>
         <h3>Salle de bains</h3>
@@ -857,40 +883,40 @@
 
   <!-- ===== MÉTHODE ===== -->
   <section id="methode">
-    <div class="methode-header">
+    <div class="methode-header reveal">
       <div class="section-eyebrow">Notre méthode</div>
       <div class="section-title">5 étapes pour un chantier<br>sans mauvaise surprise</div>
     </div>
     <div class="steps steps-flat">
-      <div class="step">
+      <div class="step reveal reveal-delay-1">
         <div class="step-num">01</div>
         <div class="step-body">
           <h4>Étude &amp; Devis gratuit</h4>
           <p>Visite sur site, écoute de votre projet, chiffrage détaillé sous 48h. Sans engagement.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-delay-2">
         <div class="step-num">02</div>
         <div class="step-body">
           <h4>Planification</h4>
           <p>Calendrier précis des interventions, coordination des corps d'état, anticipation des contraintes.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-delay-3">
         <div class="step-num">03</div>
         <div class="step-body">
           <h4>Exécution maîtrisée</h4>
           <p>Nos équipes qualifiées interviennent dans l'ordre et dans les règles de l'art.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-delay-4">
         <div class="step-num">04</div>
         <div class="step-body">
           <h4>Suivi &amp; Communication</h4>
           <p>Vous êtes informé à chaque étape clé. Zéro dérive de budget, zéro mauvaise surprise.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-delay-5">
         <div class="step-num">05</div>
         <div class="step-body">
           <h4>Livraison &amp; Garantie</h4>
@@ -902,25 +928,25 @@
 
   <!-- ===== ENGAGEMENTS ===== -->
   <section id="engagement">
-    <div class="section-eyebrow">Nos engagements</div>
-    <div class="section-title" style="color:var(--white)">Ce qui nous distingue</div>
+    <div class="section-eyebrow reveal">Nos engagements</div>
+    <div class="section-title reveal reveal-delay-1" style="color:var(--white)">Ce qui nous distingue</div>
     <div class="engagements-grid">
-      <div class="eng-card">
+      <div class="eng-card reveal reveal-delay-1">
         <span class="eng-line"></span>
         <h4>Interlocuteur unique</h4>
         <p>Un chef de projet dédié du premier contact jusqu'à la livraison finale.</p>
       </div>
-      <div class="eng-card">
+      <div class="eng-card reveal reveal-delay-2">
         <span class="eng-line"></span>
         <h4>Devis transparent</h4>
         <p>Chiffrage détaillé ligne par ligne. Aucune surprise en cours de chantier.</p>
       </div>
-      <div class="eng-card">
+      <div class="eng-card reveal reveal-delay-3">
         <span class="eng-line"></span>
         <h4>Délais respectés</h4>
         <p>Planning établi et tenu. Votre temps est aussi précieux que le nôtre.</p>
       </div>
-      <div class="eng-card">
+      <div class="eng-card reveal reveal-delay-4">
         <span class="eng-line"></span>
         <h4>Garantie décennale</h4>
         <p>Tous nos travaux sont couverts par les assurances professionnelles obligatoires.</p>
@@ -932,21 +958,21 @@
   <section id="zone">
     <div class="zone-content">
       <div>
-        <div class="section-eyebrow">Zone d'intervention</div>
-        <div class="section-title">Toute la région <em>PACA</em></div>
-        <div class="section-intro">
+        <div class="section-eyebrow reveal">Zone d'intervention</div>
+        <div class="section-title reveal reveal-delay-1">Toute la région <em>PACA</em></div>
+        <div class="section-intro reveal reveal-delay-2">
           EK TRAVAUX se déplace sur l'ensemble de la région Provence-Alpes-Côte d'Azur pour vos chantiers de rénovation et d'aménagement.
         </div>
         <div class="zone-list">
-          <div class="zone-item zone-item--primary">Bouches-du-Rhône <span class="zone-item-num">13 <span class="zone-badge">Zone principale</span></span></div>
-          <div class="zone-item">Var <span class="zone-item-num">83</span></div>
-          <div class="zone-item">Vaucluse <span class="zone-item-num">84</span></div>
-          <div class="zone-item">Alpes-Maritimes <span class="zone-item-num">06</span></div>
-          <div class="zone-item">Alpes-de-Haute-Provence <span class="zone-item-num">04</span></div>
-          <div class="zone-item">Hautes-Alpes <span class="zone-item-num">05</span></div>
+          <div class="zone-item zone-item--primary reveal reveal-delay-1">Bouches-du-Rhône <span class="zone-item-num">13 <span class="zone-badge">Zone principale</span></span></div>
+          <div class="zone-item reveal reveal-delay-2">Var <span class="zone-item-num">83</span></div>
+          <div class="zone-item reveal reveal-delay-3">Vaucluse <span class="zone-item-num">84</span></div>
+          <div class="zone-item reveal reveal-delay-4">Alpes-Maritimes <span class="zone-item-num">06</span></div>
+          <div class="zone-item reveal reveal-delay-5">Alpes-de-Haute-Provence <span class="zone-item-num">04</span></div>
+          <div class="zone-item reveal reveal-delay-6">Hautes-Alpes <span class="zone-item-num">05</span></div>
         </div>
       </div>
-      <div class="zone-visual">
+      <div class="zone-visual reveal reveal--right">
         <img src="../paca-map.png" alt="Région PACA">
       </div>
     </div>
@@ -956,7 +982,7 @@
   <section id="contact" class="contact-dark">
     <div class="contact-wrap">
 
-      <div class="contact-info">
+      <div class="contact-info reveal reveal--left">
         <div class="section-eyebrow section-eyebrow--light">Contact</div>
         <div class="contact-big-title">Discuter<br>d'un projet</div>
         <div class="contact-details-list">
@@ -975,7 +1001,7 @@
         </div>
       </div>
 
-      <div class="contact-form">
+      <div class="contact-form reveal reveal--right">
         <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
           <input type="hidden" name="access_key" value="cf927568-5981-4c98-8b89-4579709124f7">
           <input type="hidden" name="subject" value="Nouvelle demande de devis — EK TRAVAUX">
@@ -1070,6 +1096,18 @@
         navLogoImg.classList.remove('visible');
       }
     });
+
+    // ===== ANIMATIONS SCROLL =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Formulaire contact : WhatsApp ou Email
     const form = document.getElementById('contactForm');
