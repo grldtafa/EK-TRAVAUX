@@ -1206,39 +1206,39 @@
   <style>
     .rgpd-banner {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 28px;
+      left: 28px;
       z-index: 10000;
       background: var(--ink);
       color: #fff;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 28px;
-      font-size: 13px;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px;
+      font-size: 12px;
       line-height: 1.5;
-      box-shadow: 0 -2px 16px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      max-width: 280px;
     }
     .rgpd-banner p { margin: 0; opacity: 0.85; }
     .rgpd-banner a { color: var(--gold); text-decoration: none; }
     .rgpd-banner a:hover { text-decoration: underline; }
     .rgpd-close {
-      flex-shrink: 0;
+      align-self: flex-start;
       background: var(--gold);
       color: #fff;
       border: none;
       border-radius: 6px;
-      padding: 8px 20px;
-      font-size: 13px;
+      padding: 6px 16px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
     }
     .rgpd-close:hover { background: var(--gold-light); }
     @media (max-width: 600px) {
-      .rgpd-banner { flex-direction: column; align-items: flex-start; padding: 16px; }
+      .rgpd-banner { bottom: 20px; left: 12px; max-width: calc(100vw - 80px); }
     }
   </style>
 
