@@ -762,7 +762,7 @@
       gap: 16px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .footer-logo img { height: 28px; opacity: 0.65; }
+    .footer-logo img { height: 48px; filter: brightness(0) invert(1); opacity: 0.9; }
     .footer-copy { font-size: 11px; letter-spacing: 0.04em; }
     .footer-links {
       display: flex;
@@ -826,6 +826,74 @@
 
       footer { flex-direction: column; align-items: flex-start; }
     }
+    /* ===== GALERIE ===== */
+    #realisations { background: var(--white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--grey-3);
+      cursor: pointer;
+    }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .gallery-card:hover img { transform: scale(1.06); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.80) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-card:hover .gallery-overlay { opacity: 1; }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px; color: var(--white);
+      transform: translateY(8px); opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .gallery-card:hover .gallery-caption { transform: translateY(0); opacity: 1; }
+    .gallery-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .gallery-caption h4 { font-size: 15px; font-weight: 600; line-height: 1.3; }
+    .gallery-caption small { font-size: 12px; opacity: 0.6; }
+    .gallery-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--grey-2); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 20px; }
+    .gallery-ph svg { opacity: 0.35; }
+    .gallery-ph span { opacity: 0.55; }
+    @media (max-width: 700px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    /* ===== ACCORDÉON ===== */
+    .acc-list { margin-top: 48px; border: 1px solid var(--grey-3); }
+    .acc-item { border-bottom: 1px solid var(--grey-3); }
+    .acc-item:last-child { border-bottom: none; }
+    .acc-trigger { width: 100%; display: flex; align-items: center; gap: 20px; padding: 24px 28px; background: none; border: none; cursor: pointer; text-align: left; transition: background 0.2s; font-family: var(--font-body); }
+    .acc-trigger:hover, .acc-item.open .acc-trigger { background: var(--paper); }
+    .acc-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; min-width: 28px; }
+    .acc-title { flex: 1; font-size: 16px; font-weight: 600; color: var(--ink); }
+    .acc-arrow { color: var(--grey-2); transition: transform 0.3s; flex-shrink: 0; }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.22,1,0.36,1); }
+    .acc-item.open .acc-body { max-height: 200px; }
+    .acc-body-inner { padding: 0 28px 24px 76px; font-size: 14px; font-weight: 300; color: var(--grey-1); line-height: 1.75; }
+    @media (max-width: 700px) { .acc-body-inner { padding: 0 20px 20px 20px; } }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--paper); }
+    .faq-wrap { margin-top: 48px; border: 1px solid var(--grey-3); }
+    .faq-item { border-bottom: 1px solid var(--grey-3); background: var(--white); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 28px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--ink); transition: background 0.2s; }
+    .faq-trigger:hover { background: var(--paper); }
+    .faq-plus { color: var(--gold); font-size: 22px; font-weight: 300; line-height: 1; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-plus { transform: rotate(45deg); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.22,1,0.36,1); }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-body-inner { padding: 0 28px 22px; font-size: 14px; font-weight: 300; color: var(--grey-1); line-height: 1.8; }
+
     /* ===== ANIMATIONS SCROLL ===== */
     .reveal {
       opacity: 0;
@@ -863,6 +931,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#methode">Méthode</a></li>
       <li><a href="#engagement">Engagements</a></li>
       <li><a href="#zone">Zone</a></li>
@@ -962,47 +1031,91 @@
     </div>
   </section>
 
+  <!-- ===== RÉALISATIONS ===== -->
+  <section id="realisations">
+    <div class="reveal">
+      <div class="section-eyebrow">Nos réalisations</div>
+      <div class="section-title">Des chantiers <em>livrés avec soin</em></div>
+      <div class="section-intro">Un aperçu de projets récents réalisés par nos équipes en région PACA. Vos photos à venir.</div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card reveal reveal-delay-1">
+        <div class="gallery-ph" style="background:#ECEAE6;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Rénovation complète</div><h4>Appartement T3</h4><small>Marseille 6ème</small></div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-2">
+        <div class="gallery-ph" style="background:#E8E6E2;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Salle de bains</div><h4>Réfection totale</h4><small>Aix-en-Provence</small></div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-3">
+        <div class="gallery-ph" style="background:#ECEAE6;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Électricité</div><h4>Mise aux normes</h4><small>Marseille 13ème</small></div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-4">
+        <div class="gallery-ph" style="background:#E8E6E2;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><path d="M2 12h20M12 2l8 10-8 10-8-10 8-10z"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Peinture & Revêtements</div><h4>Rénovation salon</h4><small>Toulon</small></div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-5">
+        <div class="gallery-ph" style="background:#ECEAE6;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Cuisine</div><h4>Réaménagement complet</h4><small>Marseille 8ème</small></div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-6">
+        <div class="gallery-ph" style="background:#E8E6E2;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2"><path d="M2 20h20M4 20V10l8-7 8 7v10"/></svg>
+          <span>Photo à venir</span>
+        </div>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption"><div class="gallery-tag">Plomberie</div><h4>Installation complète</h4><small>Aubagne</small></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== MÉTHODE ===== -->
   <section id="methode">
     <div class="methode-header reveal">
       <div class="section-eyebrow">Notre méthode</div>
       <div class="section-title">5 étapes pour un chantier<br>sans mauvaise surprise</div>
     </div>
-    <div class="steps steps-flat">
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <h4>Étude &amp; Devis gratuit</h4>
-          <p>Visite sur site, écoute de votre projet, chiffrage détaillé sous 48h. Sans engagement.</p>
-        </div>
+    <div class="acc-list">
+      <div class="acc-item reveal reveal-delay-1">
+        <button class="acc-trigger"><span class="acc-num">01</span><span class="acc-title">Étude &amp; Devis gratuit</span><svg class="acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner">Visite sur site, écoute de votre projet, chiffrage détaillé sous 48h. Sans engagement.</div></div>
       </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <h4>Planification</h4>
-          <p>Calendrier précis des interventions, coordination des corps d'état, anticipation des contraintes.</p>
-        </div>
+      <div class="acc-item reveal reveal-delay-2">
+        <button class="acc-trigger"><span class="acc-num">02</span><span class="acc-title">Planification</span><svg class="acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner">Calendrier précis des interventions, coordination des corps d'état, anticipation des contraintes.</div></div>
       </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <h4>Exécution maîtrisée</h4>
-          <p>Nos équipes qualifiées interviennent dans l'ordre et dans les règles de l'art.</p>
-        </div>
+      <div class="acc-item reveal reveal-delay-3">
+        <button class="acc-trigger"><span class="acc-num">03</span><span class="acc-title">Exécution maîtrisée</span><svg class="acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner">Nos équipes qualifiées interviennent dans l'ordre et dans les règles de l'art.</div></div>
       </div>
-      <div class="step reveal reveal-delay-4">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <h4>Suivi &amp; Communication</h4>
-          <p>Vous êtes informé à chaque étape clé. Zéro dérive de budget, zéro mauvaise surprise.</p>
-        </div>
+      <div class="acc-item reveal reveal-delay-4">
+        <button class="acc-trigger"><span class="acc-num">04</span><span class="acc-title">Suivi &amp; Communication</span><svg class="acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner">Vous êtes informé à chaque étape clé. Zéro dérive de budget, zéro mauvaise surprise.</div></div>
       </div>
-      <div class="step reveal reveal-delay-5">
-        <div class="step-num">05</div>
-        <div class="step-body">
-          <h4>Livraison &amp; Garantie</h4>
-          <p>Réception du chantier avec vous, levée des réserves et garantie décennale sur nos travaux.</p>
-        </div>
+      <div class="acc-item reveal reveal-delay-5">
+        <button class="acc-trigger"><span class="acc-num">05</span><span class="acc-title">Livraison &amp; Garantie</span><svg class="acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="acc-body"><div class="acc-body-inner">Réception du chantier avec vous, levée des réserves et garantie décennale sur nos travaux.</div></div>
       </div>
     </div>
   </section>
@@ -1037,6 +1150,32 @@
       </div>
       <div class="zone-visual reveal reveal--right">
         <img src="paca-map.png" alt="Région PACA">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="reveal">
+      <div class="section-eyebrow">Questions fréquentes</div>
+      <div class="section-title">Tout ce que vous <em>voulez savoir</em></div>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-trigger">Quel est le délai pour obtenir un devis ?<span class="faq-plus">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner">Nous intervenons sur site sous 48h pour évaluer votre projet, et vous recevez votre devis détaillé dans la foulée. Le devis est toujours gratuit et sans engagement.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-trigger">Êtes-vous couverts par la garantie décennale ?<span class="faq-plus">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner">Oui. EK TRAVAUX est couvert par une assurance responsabilité civile professionnelle et une garantie décennale sur l'ensemble de nos travaux. Vous êtes protégé pendant 10 ans.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-trigger">Intervenez-vous uniquement à Marseille ?<span class="faq-plus">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner">Non, nous intervenons sur toute la région PACA : Marseille, Aix-en-Provence, Toulon, Nice, Avignon et leurs environs. Notre zone principale est les Bouches-du-Rhône (13) mais nous nous déplaçons sur l'ensemble de la région.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-delay-4">
+        <button class="faq-trigger">Puis-je suivre l'avancement de mon chantier ?<span class="faq-plus">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner">Absolument. Vous avez un interlocuteur unique du début à la fin. Il vous tient informé à chaque étape clé, sans surprise de budget ni de délai. Vous pouvez nous contacter à tout moment par téléphone ou WhatsApp.</div></div>
       </div>
     </div>
   </section>
@@ -1223,69 +1362,6 @@
     }
   </script>
 
-  <!-- ===== BANDEAU RGPD ===== -->
-  <div class="rgpd-banner" id="rgpdBanner">
-    <p>Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. Aucun cookie publicitaire ni de suivi n'est utilisé. <a href="mailto:ektravaux13@gmail.com">En savoir plus</a></p>
-    <button class="rgpd-close" id="rgpdClose" aria-label="Fermer">J'ai compris</button>
-  </div>
-
-  <style>
-    .rgpd-banner {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 10000;
-      background: rgba(26,26,26,0.95);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      font-size: 11px;
-      border-radius: 50px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-      backdrop-filter: blur(8px);
-      max-width: 320px;
-    }
-    .rgpd-banner p { margin: 0; opacity: 0.75; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .rgpd-close {
-      flex-shrink: 0;
-      background: var(--gold);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 5px 12px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .rgpd-close:hover { background: var(--gold-light); }
-    @media (max-width: 600px) {
-      .rgpd-banner { bottom: 20px; right: 12px; max-width: calc(100vw - 24px); }
-    }
-  </style>
-
-  <script>
-    (function() {
-      var banner = document.getElementById('rgpdBanner');
-      var waBtn = document.getElementById('waFloat');
-      var btn = document.getElementById('rgpdClose');
-      var accepted = localStorage.getItem('rgpd_ok');
-      if (accepted) {
-        banner.style.display = 'none';
-      } else {
-        if (waBtn) waBtn.style.display = 'none';
-      }
-      btn.addEventListener('click', function() {
-        localStorage.setItem('rgpd_ok', '1');
-        banner.style.display = 'none';
-        if (waBtn) { waBtn.style.display = 'flex'; }
-      });
-    })();
-  </script>
-
   <!-- ===== BOUTON WHATSAPP FLOTTANT ===== -->
   <a href="https://wa.me/33602179070?text=Bonjour%20EK%20TRAVAUX%2C%20je%20souhaite%20un%20devis." class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Contactez-nous sur WhatsApp">
     <svg class="wa-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1332,6 +1408,18 @@
       .wa-label { display: none; }
     }
   </style>
+
+  <script>
+    // Accordéon méthode + FAQ
+    document.querySelectorAll('.acc-trigger, .faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.acc-item') || trigger.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.acc-item, .faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 
 </body>
 </html>
