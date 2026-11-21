@@ -159,20 +159,10 @@
       border-color: var(--gold) !important;
     }
 
-    /* Burger */
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .burger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: rgba(255,255,255,0.8);
-      transition: all 0.3s;
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     /* ===== HERO ===== */
@@ -964,17 +954,9 @@
     <a href="#" class="nav-logo">
       <img src="logo-site.png" alt="EK TRAVAUX">
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#realisations">Réalisations</a></li>
-      <li><a href="#methode">Méthode</a></li>
-      <li><a href="#engagement">Engagements</a></li>
-      <li><a href="#zone">Zone</a></li>
-      <li><a href="tel:+33602179070" class="nav-tel">06 02 17 90 70</a></li>
-      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
-    </ul>
-    <div class="burger" id="burger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+    <div class="nav-actions">
+      <a href="tel:+33602179070" class="nav-tel">06 02 17 90 70</a>
+      <a href="#contact" class="nav-cta">Devis gratuit</a>
     </div>
   </nav>
 
@@ -1319,15 +1301,6 @@
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
-    });
-
     // Nav : apparait quand on depasse le hero
     const navEl = document.querySelector('nav');
     const navLogoImg = document.querySelector('.nav-logo img');
